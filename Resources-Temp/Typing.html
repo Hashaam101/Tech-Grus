@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<head>
+<style>
+  pre {
+    font-family: monospace;
+    font-size: 16px;
+    white-space: pre-wrap; /* Preserve line breaks */
+    overflow: hidden; /* Hide overflow text */
+    border-right: .15em solid orange; /* Add cursor */
+    animation: typing 2s steps(40) forwards; /* Typing animation */
+  }
+
+  /* Typing animation keyframes */
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+</style>
+</head>
+<body>
+<pre id="ascii-art">
+<!-- ASCII art will be dynamically inserted here -->
+</pre>
+
+<script>
+  // ASCII art to be typed
+  const asciiArt = `
+
+######## ########  ######  ##     ##        ######   ########  ##     ##  ######  
+   ##    ##       ##    ## ##     ##       ##    ##  ##     ## ##     ## ##    ## 
+   ##    ##       ##       ##     ##       ##        ##     ## ##     ## ##       
+   ##    ######   ##       #########       ##   #### ########  ##     ##  ######  
+   ##    ##       ##       ##     ##       ##    ##  ##   ##   ##     ##       ## 
+   ##    ##       ##    ## ##     ##       ##    ##  ##    ##  ##     ## ##    ## 
+   ##    ########  ######  ##     ##        ######   ##     ##  #######   ######  
+
+`;
+
+  // Function to type ASCII art line by line
+  function typeASCII() {
+    const pre = document.getElementById('ascii-art');
+    const lines = asciiArt.split('\n');
+    let i = 0;
+
+    // Type each line with a delay
+    function typeLine() {
+      pre.textContent += lines[i++] + '\n';
+      if (i < lines.length) {
+        setTimeout(typeLine, 200); // Adjust typing speed here (in milliseconds)
+      }
+    }
+
+    typeLine();
+  }
+
+  // Start typing animation when the page loads
+  window.onload = typeASCII;
+</script>
+
+</body>
+</html>
